@@ -1,0 +1,23 @@
+# ninja log v5
+14	1193	7283553226740367	CMakeFiles/NeuronNetwork.dir/main.cpp.obj	b9c5ad37becd2c22
+997	1686	7283553780011297	NeuronNetwork.exe	7ee0cade66ff9d22
+6	996	7283553773185448	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+6	1001	7283554161633196	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+1002	1622	7283554167808965	NeuronNetwork.exe	7ee0cade66ff9d22
+10	1959	7283554300563081	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+1959	2560	7283554306497582	NeuronNetwork.exe	7ee0cade66ff9d22
+7	1877	7283554662158431	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+1880	2480	7283554668110313	NeuronNetwork.exe	7ee0cade66ff9d22
+10	2151	7283554800401700	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+2151	2757	7283554806406052	NeuronNetwork.exe	7ee0cade66ff9d22
+8	1047	7283556628531123	CMakeFiles/NeuronNetwork.dir/main.cpp.obj	b9c5ad37becd2c22
+22	1314	7283556631203707	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+1315	1934	7283556637318486	NeuronNetwork.exe	7ee0cade66ff9d22
+6	2591	7283557575864456	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+2592	3304	7283557582936089	NeuronNetwork.exe	7ee0cade66ff9d22
+11	2598	7283557792112235	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+2598	3243	7283557798501749	NeuronNetwork.exe	7ee0cade66ff9d22
+8	1862	7283557896818003	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+1862	2631	7283557904452632	NeuronNetwork.exe	7ee0cade66ff9d22
+8	1854	7283557998875312	CMakeFiles/NeuronNetwork.dir/Window.cpp.obj	5eb3f18ec38515e
+1854	2683	7283558007141830	NeuronNetwork.exe	7ee0cade66ff9d22

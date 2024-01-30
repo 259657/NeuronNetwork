@@ -1,0 +1,5 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2020.2.4/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\PRO\Desktop\NeuronNetwork -B C:\Users\PRO\Desktop\NeuronNetwork\cmake-build-debug
+-- Found SFML 2.5.1 in C:/cpp/SFML-2.5.1/lib/cmake/SFML
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/PRO/Desktop/NeuronNetwork/cmake-build-debug
