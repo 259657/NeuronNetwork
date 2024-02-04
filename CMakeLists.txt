@@ -19,6 +19,6 @@ endif(WIN32)
 
 find_package(SFML 2 COMPONENTS graphics audio REQUIRED)
 
-add_executable( NeuronNetwork main.cpp Window.cpp Window.h)
+add_executable( NeuronNetwork main.cpp source/Window.cpp include/Window.h source/Neuron.cpp include/Neuron.h source/Net.cpp include/Net.h)
 
 target_link_libraries(NeuronNetwork sfml-graphics sfml-audio)

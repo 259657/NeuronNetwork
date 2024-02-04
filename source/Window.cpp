@@ -2,7 +2,7 @@
 // Created by PRO on 30.01.2024.
 //
 
-#include "Window.h"
+#include "../include/Window.h"
 
 
 Window::Window(int w, int h): width(w),height(h) {

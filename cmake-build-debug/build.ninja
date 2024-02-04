@@ -57,13 +57,29 @@ build CMakeFiles/NeuronNetwork.dir/main.cpp.obj: CXX_COMPILER__NeuronNetwork_Deb
   OBJECT_DIR = CMakeFiles\NeuronNetwork.dir
   OBJECT_FILE_DIR = CMakeFiles\NeuronNetwork.dir
 
-build CMakeFiles/NeuronNetwork.dir/Window.cpp.obj: CXX_COMPILER__NeuronNetwork_Debug C$:/Users/PRO/Desktop/NeuronNetwork/Window.cpp || cmake_object_order_depends_target_NeuronNetwork
+build CMakeFiles/NeuronNetwork.dir/source/Window.cpp.obj: CXX_COMPILER__NeuronNetwork_Debug C$:/Users/PRO/Desktop/NeuronNetwork/source/Window.cpp || cmake_object_order_depends_target_NeuronNetwork
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\NeuronNetwork.dir\Window.cpp.obj.d
+  DEP_FILE = CMakeFiles\NeuronNetwork.dir\source\Window.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -Wall -Wextra -std=gnu++14
   INCLUDES = -isystem C:/cpp/SFML-2.5.1/include
   OBJECT_DIR = CMakeFiles\NeuronNetwork.dir
-  OBJECT_FILE_DIR = CMakeFiles\NeuronNetwork.dir
+  OBJECT_FILE_DIR = CMakeFiles\NeuronNetwork.dir\source
+
+build CMakeFiles/NeuronNetwork.dir/source/Neuron.cpp.obj: CXX_COMPILER__NeuronNetwork_Debug C$:/Users/PRO/Desktop/NeuronNetwork/source/Neuron.cpp || cmake_object_order_depends_target_NeuronNetwork
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\NeuronNetwork.dir\source\Neuron.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -Wall -Wextra -std=gnu++14
+  INCLUDES = -isystem C:/cpp/SFML-2.5.1/include
+  OBJECT_DIR = CMakeFiles\NeuronNetwork.dir
+  OBJECT_FILE_DIR = CMakeFiles\NeuronNetwork.dir\source
+
+build CMakeFiles/NeuronNetwork.dir/source/Net.cpp.obj: CXX_COMPILER__NeuronNetwork_Debug C$:/Users/PRO/Desktop/NeuronNetwork/source/Net.cpp || cmake_object_order_depends_target_NeuronNetwork
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\NeuronNetwork.dir\source\Net.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -Wall -Wextra -std=gnu++14
+  INCLUDES = -isystem C:/cpp/SFML-2.5.1/include
+  OBJECT_DIR = CMakeFiles\NeuronNetwork.dir
+  OBJECT_FILE_DIR = CMakeFiles\NeuronNetwork.dir\source
 
 
 # =============================================================================
@@ -73,7 +89,7 @@ build CMakeFiles/NeuronNetwork.dir/Window.cpp.obj: CXX_COMPILER__NeuronNetwork_D
 #############################################
 # Link the executable NeuronNetwork.exe
 
-build NeuronNetwork.exe: CXX_EXECUTABLE_LINKER__NeuronNetwork_Debug CMakeFiles/NeuronNetwork.dir/main.cpp.obj CMakeFiles/NeuronNetwork.dir/Window.cpp.obj | C$:/cpp/SFML-2.5.1/lib/libsfml-graphics-s-d.a C$:/cpp/SFML-2.5.1/lib/libsfml-audio-s-d.a C$:/cpp/SFML-2.5.1/lib/libsfml-window-s-d.a C$:/cpp/SFML-2.5.1/lib/libfreetype.a C$:/cpp/SFML-2.5.1/lib/libopenal32.a C$:/cpp/SFML-2.5.1/lib/libsfml-system-s-d.a C$:/cpp/SFML-2.5.1/lib/libvorbisfile.a C$:/cpp/SFML-2.5.1/lib/libvorbisenc.a C$:/cpp/SFML-2.5.1/lib/libvorbis.a C$:/cpp/SFML-2.5.1/lib/libogg.a C$:/cpp/SFML-2.5.1/lib/libFLAC.a
+build NeuronNetwork.exe: CXX_EXECUTABLE_LINKER__NeuronNetwork_Debug CMakeFiles/NeuronNetwork.dir/main.cpp.obj CMakeFiles/NeuronNetwork.dir/source/Window.cpp.obj CMakeFiles/NeuronNetwork.dir/source/Neuron.cpp.obj CMakeFiles/NeuronNetwork.dir/source/Net.cpp.obj | C$:/cpp/SFML-2.5.1/lib/libsfml-graphics-s-d.a C$:/cpp/SFML-2.5.1/lib/libsfml-audio-s-d.a C$:/cpp/SFML-2.5.1/lib/libsfml-window-s-d.a C$:/cpp/SFML-2.5.1/lib/libfreetype.a C$:/cpp/SFML-2.5.1/lib/libopenal32.a C$:/cpp/SFML-2.5.1/lib/libsfml-system-s-d.a C$:/cpp/SFML-2.5.1/lib/libvorbisfile.a C$:/cpp/SFML-2.5.1/lib/libvorbisenc.a C$:/cpp/SFML-2.5.1/lib/libvorbis.a C$:/cpp/SFML-2.5.1/lib/libogg.a C$:/cpp/SFML-2.5.1/lib/libFLAC.a
   FLAGS = -g
   LINK_LIBRARIES = C:/cpp/SFML-2.5.1/lib/libsfml-graphics-s-d.a  C:/cpp/SFML-2.5.1/lib/libsfml-audio-s-d.a  C:/cpp/SFML-2.5.1/lib/libsfml-window-s-d.a  -lgdi32  -lOpenGL32  C:/cpp/SFML-2.5.1/lib/libfreetype.a  C:/cpp/SFML-2.5.1/lib/libopenal32.a  C:/cpp/SFML-2.5.1/lib/libsfml-system-s-d.a  -lwinmm  C:/cpp/SFML-2.5.1/lib/libvorbisfile.a  C:/cpp/SFML-2.5.1/lib/libvorbisenc.a  C:/cpp/SFML-2.5.1/lib/libvorbis.a  C:/cpp/SFML-2.5.1/lib/libogg.a  C:/cpp/SFML-2.5.1/lib/libFLAC.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\NeuronNetwork.dir
