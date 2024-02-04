@@ -14,6 +14,7 @@ class Neuron  {
     double value;
     std::vector<double> weightin;
     std::vector<double> weightout;
+    double error;
 public:
 // r - prymitywny rodzaj neurona
     Neuron(int r){
