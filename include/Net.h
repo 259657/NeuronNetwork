@@ -7,7 +7,7 @@
 #include <algorithm>
 
 class Net {
-
+    int input,  hidden,  output;
     std::vector<Neuron> in;
     std::vector<Neuron> hide;
     std::vector<Neuron> out;
@@ -16,6 +16,7 @@ class Net {
 public:
     Net(int input , int hidden , int output);
     void Print_layer(int number);
+    void initWeight(std::vector<Neuron>& in , std::vector<Neuron> & out);
 
 };
 

@@ -15,8 +15,10 @@ int main() {
 //Neuron n;
 //n.rand_num();
 Net siec(2,3,1);
-siec.Print_layer(0);
 
+siec.Print_layer(0);
+siec.Print_layer(1);
+siec.Print_layer(2);
 
 
 

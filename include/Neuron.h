@@ -10,19 +10,26 @@
 #include <iostream>
 
 class Neuron  {
-
+//
     double value;
-    //std::vector<double> weightin;
-   // std::vector<double> weightout;
+    std::vector<double> weightin;
+    std::vector<double> weightout;
 public:
-
-    Neuron(){
-        //this->value = 0;
-        rand_num();
+// r - prymitywny rodzaj neurona
+    Neuron(int r){
+    if(r == 1){
+        this->value = 0;
+    }else
+        this->value = rand_num();
     };
-    double activation_fun(std::vector<Neuron>);
-    void rand_num();
+    //
+    double activation_fun(std::vector<Neuron>& in , std::vector<Neuron> & out);
+    double rand_num();
     double getValue() const {return  value;};
+    void setValue(double val)  {value = val;};
+    void initWeightOut(size_t i);
+    void initWeightInt(size_t i);
+    void PrintWeightOut();
 
 };
 
