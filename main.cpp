@@ -19,7 +19,12 @@ Net siec(2,3,1);
 siec.Print_layer(0);
 siec.Print_layer(1);
 siec.Print_layer(2);
+siec.ForwardNetwork();
 
+std::cout<<"Po funkcji"<<std::endl;
+    siec.Print_layer(0);
+    siec.Print_layer(1);
+    siec.Print_layer(2);
 
 
     return 0;

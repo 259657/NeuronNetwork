@@ -19,6 +19,7 @@ public:
     void initWeight(std::vector<Neuron>& in , std::vector<Neuron> & out);
 
     //sum of [waga*input]+bios
+
      void ForwardNetwork();
 
 };

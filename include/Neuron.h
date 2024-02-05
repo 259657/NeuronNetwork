@@ -27,10 +27,13 @@ public:
     double activation_fun(std::vector<Neuron>& in , std::vector<Neuron> & out);
     double rand_num();
     double getValue() const {return  value;};
+    double getWeight(size_t i) const {return  weightout[i];};
     void setValue(double val)  {value = val;};
     void initWeightOut(size_t i);
     void initWeightInt(size_t i);
     void PrintWeightOut();
+//sum = (weights * an-1) + bios
+    void SumAndBios(double weight, double neuron);
 
 };
 

@@ -52,4 +52,23 @@ void Net::initWeight(std::vector<Neuron>& in , std::vector<Neuron> & out) {
 
 }
 
+void Net::ForwardNetwork() {
+//std::cout<<all.size()<<std::endl;
+    for(size_t i = 1; i != all.size();i++){// warstwa
+        for(size_t j = 0 ; j != all[i].size();j++){//który neuron w warstwie aktualnej
+            for(size_t z = 0; z != all[i-1].size();z++){//popzednie neurony
+
+                all[i][j].SumAndBios(all[i-1][z].getWeight(j) ,all[i-1][z].getValue());
+               // std::cout<<"Value"<<all[i-1][z].getValue()<<std::endl;
+                //std::cout<<"Waga"<<all[i-1][z].getWeight(j)<<std::endl;
+
+            }
+            all[i][j].SumAndBios(1 ,1 );//biios
+
+        }
+    }
+
+
+}
+
 
