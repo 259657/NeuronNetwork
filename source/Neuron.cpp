@@ -6,7 +6,8 @@
 
 double Neuron::rand_num() {
 
-    double wylosowana_liczba =( (double)std::rand() / RAND_MAX );
+    double wylosowana_liczba =( (double)std::rand() / RAND_MAX );//0 - 1
+    wylosowana_liczba = (wylosowana_liczba*2)-1; //-1 - 1
    return  wylosowana_liczba;
    //std::cout<<"Wartosc neurona :"<<value<<std::endl;
 
@@ -44,3 +45,4 @@ void Neuron::SumAndBios(double weight, double neuron) {
 
     this->value += weight*neuron;
 }
+

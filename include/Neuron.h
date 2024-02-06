@@ -20,6 +20,8 @@ public:
     Neuron(int r){
     if(r == 1){
         this->value = 0;
+    }else if (r == 0){
+        this->value =( std::rand() % 2) ;
     }else
         this->value = rand_num();
     };
@@ -34,6 +36,7 @@ public:
     void PrintWeightOut();
 //sum = (weights * an-1) + bios
     void SumAndBios(double weight, double neuron);
+
 
 };
 

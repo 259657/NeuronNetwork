@@ -5,6 +5,7 @@
 #include "Neuron.h"
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 class Net {
     int input,  hidden,  output;
@@ -18,10 +19,15 @@ public:
     void Print_layer(int number);
     void initWeight(std::vector<Neuron>& in , std::vector<Neuron> & out);
 
-    //sum of [waga*input]+bios
+    //sum of [waga*input]+bias
+    void ForwardNetwork();
+    void BackNetwork();
 
-     void ForwardNetwork();
+    double ActivationFunction(int function , bool is_backprop,double sum_of_neuron);
 
+    double TanhFunction(bool is_backprop,double sum_of_neuron);// Wartosci pomiedzy -1 a 1 przydatne w hidden layers
+    double SigmoidFunction(bool is_backprop,double x);// Wartosci pomiędzy 0 a 1 przydatne  w binary ? chyba ?
+    //void ReLuFunction(); max(0,x)
 };
 
 
