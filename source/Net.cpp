@@ -61,13 +61,13 @@ void Net::ForwardNetwork() {
         for(size_t j = 0 ; j != all[i].size();j++){//który neuron w warstwie aktualnej
             for(size_t z = 0; z != all[i-1].size();z++){//popzednie neurony
 
-                all[i][j].SumAndBios(all[i-1][z].getWeight(j) ,all[i-1][z].getValue());
+                all[i][j].SumAndBias(all[i-1][z].getWeight(j) ,all[i-1][z].getValue());
                // std::cout<<"Value"<<all[i-1][z].getValue()<<std::endl;
                 //std::cout<<"Waga"<<all[i-1][z].getWeight(j)<<std::endl;
 
             }
             if(i !=all.size()-1) {//ostatnia warstwa nie potrzebuje baiosu poniewaz problem nie jest az tak skomplikowany
-                all[i][j].SumAndBios(1, 1);//biios
+                all[i][j].SumAndBias(1, 1);//biios
             }
             all[i][j].setValue(ActivationFunction(0,false,all[i][j].getValue()));
 
@@ -76,6 +76,11 @@ void Net::ForwardNetwork() {
 }
 
 void Net::BackNetwork() {
+// przliczanie RMS - Root Mean Square Error
+
+//error przelicza sie od farstwy outputów przez wszystkie wardty hidden
+
+// po przeliczeniu erroru wartosci wag musza sie zmienic
 
 }
 

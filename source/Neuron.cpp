@@ -41,7 +41,7 @@ void Neuron::PrintWeightOut() {
 
 }
 
-void Neuron::SumAndBios(double weight, double neuron) {
+void Neuron::SumAndBias(double weight, double neuron) {
 
     this->value += weight*neuron;
 }

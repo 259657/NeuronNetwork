@@ -14,7 +14,8 @@ class Neuron  {
     double value;
     std::vector<double> weightin;
     std::vector<double> weightout;
-    double error;
+    double error;//eror w outpucie to wynik - oczekiwana wartosc.
+                 // w hidden error to eroor z poprzedzajacego neurona * waga
 public:
 // r - prymitywny rodzaj neurona
     Neuron(int r){
@@ -35,7 +36,7 @@ public:
     void initWeightInt(size_t i);
     void PrintWeightOut();
 //sum = (weights * an-1) + bios
-    void SumAndBios(double weight, double neuron);
+    void SumAndBias(double weight, double neuron);
 
 
 };

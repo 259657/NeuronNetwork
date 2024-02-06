@@ -38,3 +38,13 @@
 696	1314	7289354148315684	NeuronNetwork.exe	b4d721ca354ecfef
 5	709	7289354619543821	CMakeFiles/NeuronNetwork.dir/source/Net.cpp.obj	2d5581a2a978ae4e
 710	1310	7289354625496792	NeuronNetwork.exe	b4d721ca354ecfef
+5	688	7289356407402697	CMakeFiles/NeuronNetwork.dir/main.cpp.obj	b9c5ad37becd2c22
+688	1396	7289356414399430	NeuronNetwork.exe	b4d721ca354ecfef
+15	2089	7289394828953722	CMakeFiles/NeuronNetwork.dir/source/Neuron.cpp.obj	a538532a9fe225a7
+8	2338	7289394831474121	CMakeFiles/NeuronNetwork.dir/main.cpp.obj	b9c5ad37becd2c22
+20	2356	7289394831637446	CMakeFiles/NeuronNetwork.dir/source/Net.cpp.obj	2d5581a2a978ae4e
+2356	3187	7289394839872964	NeuronNetwork.exe	b4d721ca354ecfef
+7	1523	7289394992079715	CMakeFiles/NeuronNetwork.dir/main.cpp.obj	b9c5ad37becd2c22
+1523	2135	7289394998135505	NeuronNetwork.exe	b4d721ca354ecfef
+4	1637	7289395106750246	CMakeFiles/NeuronNetwork.dir/main.cpp.obj	b9c5ad37becd2c22
+1638	2258	7289395112892104	NeuronNetwork.exe	b4d721ca354ecfef

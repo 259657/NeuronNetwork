@@ -17,15 +17,21 @@ int main() {
 Net siec(2,3,1);
 
 siec.Print_layer(0);
-siec.Print_layer(1);
-siec.Print_layer(2);
+//siec.Print_layer(1);
+//siec.Print_layer(2);
 siec.ForwardNetwork();
 
 std::cout<<"Po funkcji"<<std::endl;
-    siec.Print_layer(0);
-    siec.Print_layer(1);
+   // siec.Print_layer(0);
+   // siec.Print_layer(1);
     siec.Print_layer(2);
 
+
+    // Wykorzystac do testów ustawianie binarnie inputów i wynik
+    int x = 1;
+    int y = 1;
+    int z = x ^ y;
+    std::cout<<"Z  "<<z<<std::endl;
 
     return 0;
 }
