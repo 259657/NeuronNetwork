@@ -27,11 +27,11 @@ void Neuron::initWeightOut(size_t siz) {
         weightout.push_back(rand_num());
     }
 }
-void Neuron::initWeightInt(size_t siz) {
-    for(size_t i = 0 ; i < siz; i++){
-        weightin.push_back(rand_num());
-    }
-}
+//void Neuron::initWeightInt(size_t siz) {
+//    for(size_t i = 0 ; i < siz; i++){
+//        weightin.push_back(rand_num());
+//    }
+//}
 
 void Neuron::PrintWeightOut() {
 

@@ -13,7 +13,9 @@ class Net {
     std::vector<Neuron> hide;
     std::vector<Neuron> out;
     std::vector<std::vector<Neuron>> all;
-    double rms;
+   // double RM;//Root Mean  Error
+    double total_error;
+
 
 public:
     Net(int input , int hidden , int output);
@@ -23,7 +25,7 @@ public:
     //sum of [waga*input]+bias
     void ForwardNetwork();
 
-    void BackNetwork();
+    void BackNetwork(double expected_value);
 
     double ActivationFunction(int function , bool is_backprop,double sum_of_neuron);
 

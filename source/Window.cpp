@@ -74,7 +74,7 @@ void Window::update() {
 
 void Window::run() {
     set_vec(2,width/4,150,front);
-    set_vec(3,width,50,middle);
+    set_vec(4,width,50,middle);
     set_vec(2,1.7*width,150,end);
     connect(front,middle,line_start,sf::Color::Red);
     connect(middle,end,line_end,sf::Color::Blue);

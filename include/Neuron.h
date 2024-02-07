@@ -12,13 +12,16 @@
 class Neuron  {
 //
     double value;
-    std::vector<double> weightin;
+    double sum;
+   // std::vector<double> weightin;
     std::vector<double> weightout;
     double error;//eror w outpucie to wynik - oczekiwana wartosc.
                  // w hidden error to eroor z poprzedzajacego neurona * waga
 public:
 // r - prymitywny rodzaj neurona
     Neuron(int r){
+    sum = 0;
+    error = 0;
     if(r == 1){
         this->value = 0;
     }else if (r == 0){
@@ -30,8 +33,12 @@ public:
     double activation_fun(std::vector<Neuron>& in , std::vector<Neuron> & out);
     double rand_num();
     double getValue() const {return  value;};
+    double getErr() const {return  error;};
     double getWeight(size_t i) const {return  weightout[i];};
+    size_t getWeight_siz() const {return  weightout.size();};
     void setValue(double val)  {value = val;};
+    void setSum(double val)  {sum = val;};
+    void setErr(double val)  {error = val;};
     void initWeightOut(size_t i);
     void initWeightInt(size_t i);
     void PrintWeightOut();

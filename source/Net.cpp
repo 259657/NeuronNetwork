@@ -69,18 +69,60 @@ void Net::ForwardNetwork() {
             if(i !=all.size()-1) {//ostatnia warstwa nie potrzebuje baiosu poniewaz problem nie jest az tak skomplikowany
                 all[i][j].SumAndBias(1, 1);//biios
             }
+            all[i][j].setSum(all[i][j].getValue());
             all[i][j].setValue(ActivationFunction(0,false,all[i][j].getValue()));
 
         }
     }
 }
 
-void Net::BackNetwork() {
+void Net::BackNetwork(double exp_val) {
 // przliczanie RMS - Root Mean Square Error
+    total_error = 0.0;
 
-//error przelicza sie od farstwy outputów przez wszystkie wardty hidden
+for(size_t i = 0; i <all.back().size();i++ ){
+    //std::cout<<i<<std::endl;
+    //Przeliczanie wyjsc
+    total_error += (pow(exp_val - all.back()[i].getValue(),2))/2;
+}
 
-// po przeliczeniu erroru wartosci wag musza sie zmienic
+for(size_t i = 0; i <all.back().size();i++ ){
+
+     all.back()[i].setErr(total_error);
+    }
+
+
+    //przeliczanie errorów dla wartw innych niz output
+
+    for(size_t i = all.size()-2; i >= 0; i--) {
+
+        for (size_t j = 0; j != all[i].size(); j++) {
+            for(size_t z = 0 ; z != all[i][j].getWeight_siz() ; z++ ){
+                //tutaj juz wagi
+
+                all[i][j].setErr(all[i+1][j].getErr() * all[i][j].getWeight(z) );
+
+            }
+
+        }
+
+
+    }
+
+
+
+    for(size_t i = all.size()-2; i >= 0;i--) {// warstwa
+        for (size_t j = 0; j != all[i].size(); j++) {//który neuron w warstwie aktualnej
+            //mamy warste hiiden i sume jak zrobie active function od  sum to bede mial wartosc poprzedniego neuroan ?
+
+        }
+    }
+//RM = RM/all.back().size();
+//RM = sqrt(RM);
+//wartości tylko dla hidden
+
+
+
 
 }
 
