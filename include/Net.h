@@ -15,6 +15,8 @@ class Net {
     std::vector<std::vector<Neuron>> all;
    // double RM;//Root Mean  Error
     double total_error;
+    double learning_rate;
+    double exp_val;
 
 
 public:
@@ -24,9 +26,10 @@ public:
 
     //sum of [waga*input]+bias
     void ForwardNetwork();
+    void setExpValue_XOR();
+    void BackNetwork();
 
-    void BackNetwork(double expected_value);
-
+    double getTot_err() const {return total_error;};
     double ActivationFunction(int function , bool is_backprop,double sum_of_neuron);
 
     double TanhFunction(bool is_backprop,double sum_of_neuron);// Wartosci pomiedzy -1 a 1 przydatne w hidden layers

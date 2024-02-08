@@ -17,23 +17,29 @@ int main() {
 Net siec(2,3,1);
 
 siec.Print_layer(0);
-//siec.Print_layer(1);
-//siec.Print_layer(2);
-siec.ForwardNetwork();
-siec.BackNetwork(1.0);
+int i =0;
+do{
 
-std::cout<<"Po funkcji"<<std::endl;
+    siec.ForwardNetwork();
+    //siec.Print_layer(2);
+    //std::cout << "Po funkcji Forward" << std::endl;
+
+    //siec.Print_layer(1);
+    siec.BackNetwork();
+    //siec.Print_layer(1);
+    i++;
+    //std::cout<< "Total err "<<siec.getTot_err()<<std::endl;
+}while(/*i<20000);*/siec.getTot_err() > 0.00009);
+std::cout<<"Po funkcji Back"<<std::endl;
     //siec.Print_layer(0);
- //   siec.Print_layer(1);
+    //siec.Print_layer(1);
     siec.Print_layer(2);
+    std::cout<< "Total err po "<<i<<" iteracjach : "<<siec.getTot_err();
 
-
-    // Wykorzystac do testów ustawianie binarnie inputów i wynik
-    int x = 1; //0001
-    int y = 1; //0001
-
-    int z = x ^ y;
-    std::cout<<"Z  "<<z<<std::endl;
-
+//double x = 0.0;
+   // std::cout<<"Wynik mianownika :"<<exp(x)/(exp(2*x) + 2*exp(x)+1) <<" Dla x= "<<x<<std::endl;
     return 0;
 }
+
+
+
