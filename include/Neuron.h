@@ -17,13 +17,21 @@ class Neuron  {
     double error;//eror w outpucie to wynik - oczekiwana wartosc.
                  // w hidden error to eroor z poprzedzajacego neurona * waga
 public:
+    Neuron(){
+        sum = 0;
+        error = 0;
+        this->value =0;
+    };
+
 // r - prymitywny rodzaj neurona
     Neuron(int r){
     sum = 0;
     error = 0;
     if(r == 1){
+       // std::cout<<"TU"<<std::endl;
         this->value = 0;
     }else if (r == 0){
+       // std::cout<<"TEN"<<std::endl;
         this->value =( std::rand() % 2) ;
     }else
         this->value = rand_num();

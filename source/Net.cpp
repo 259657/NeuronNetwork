@@ -8,9 +8,8 @@
 Net::Net(int input, int hidden, int output) : input(input),hidden(hidden),output(output) {
         int sum = std::max( input, hidden );
         sum = std::max(sum,output);
-        learning_rate = 0.03;
 
-        // std::cout<<"Sum "<<sum<<std::endl;
+        learning_rate = 0.035;
 
         for(int j = 0 ; j < sum;j++){
             if(j < input){
@@ -35,13 +34,49 @@ Net::Net(int input, int hidden, int output) : input(input),hidden(hidden),output
      setExpValue_XOR();
 
 }
+Net::Net(int input_neurons, int hidden_layer, int hidden_neurons, int output_neurons):input(input_neurons),hidden(hidden_neurons),output(output_neurons) {
+
+    all.resize(2+hidden_layer);
+
+    learning_rate = 0.031;
+
+    all[0].resize(input_neurons);
+    for(size_t i = 1 ; i < all.size()-1;i++){
+        all[i].resize(hidden_neurons);
+
+    }
+    all.back().resize(output_neurons);
+
+    for(size_t i = 0 ; i < all.size();i++){
+        initNeuronsInLayer(all[i].size(),i);
+    }
+    setExpValue_XOR();
+}
+void Net::initNeuronsInLayer(size_t number_of_neurons,size_t which_layer) {
+
+    for(size_t i = 0 ; i < number_of_neurons; i++){
+        if(which_layer == 0){
+            all[which_layer][i]= Neuron(0);
+        }else{
+            all[which_layer][i]= Neuron(1);
+        }
+
+
+    }
+    if(which_layer != all.size()-1){
+        initWeight(all[which_layer],all[which_layer+1]);
+    }
+
+}
+
+
 
 void Net::Print_layer(int number) {
     std::cout<<"Warstwa : "<<number<<std::endl;
 for(size_t i = 0 ; i < all[number].size();i++ )
     {
-    std::cout<<"Wartosc Neurona "<<all[number][i].getValue()<<std::endl;
-    std::cout<<"Wagi "<<i+1<<std::endl;
+    std::cout<<"Wartosc Neurona: "<<all[number][i].getValue()<<std::endl;
+    std::cout<<"Wagi :"<<std::endl;
     all[number][i].PrintWeightOut();
         std::cout<<std::endl;
 }
@@ -113,66 +148,7 @@ void Net::BackNetwork() {
     }
 }
 
- /*void Net::BackNetwork() {
 
-// przliczanie RMS - Root Mean Square Error
-    total_error = 0.0;
-
-for(size_t i = 0; i <all.back().size();i++ ){
-    std::cout<<std::endl;
-    std::cout<<"Oczekiwana "<<exp_val<<" update "<<all.back()[i].getValue()<<std::endl;
-    //Przeliczanie wyjsc
-
-    //total_error += std::abs(exp_val - all.back()[i].getValue());
-    total_error += std::abs(pow(exp_val - all.back()[i].getValue(),2))/2;
-}
-    // std::cout<<"Exp val "<<exp_val<<std::endl;
-     //std::cout<<"Total  "<<all.back()[0].getValue()<<std::endl;
-    //std::cout<<"Wartosc bledu na wyjsciu "<<total_error<<std::endl;
-for(size_t i = 0; i <all.back().size();i++ ){
-
-     all.back()[i].setErr(total_error);
-     std::cout<<"Wartosc bledu na wyjsciu "<<all.back()[i].getErr()<<std::endl;
-    }
-
-
-    //przeliczanie errorów dla warstw innych niz output
-
-    for(int i = all.size()-2; i >= 0; i--) {
-        std::cout<<"Warstwa "<<i;
-        for (size_t j = 0; j != all[i].size(); j++) {
-            double neuron_error = 0;
-            std::cout<<" Neuron "<<j<<std::endl;
-            size_t  out_neuron = 0;
-            for(size_t z = 0 ; z != all[i][j].getWeight_siz() ; z++ ){
-                //tutaj juz wagi
-
-                neuron_error += all[i][j].getErr() + all[i+1][out_neuron].getErr() * all[i][j].getWeight(z);
-                std::abs(neuron_error);
-                std::cout<<"Wartosc eroora dla poprzedniej warstwy"<<all[i+1][out_neuron].getErr() <<std::endl;
-                out_neuron++;
-               // std::cout<<"Errr "<<neuron_error <<std::endl;
-                // all[i][j].setErr(all[i+1][j].getErr() * all[i][j].getWeight(z) );
-            }
-
-            all[i][j].setErr(neuron_error);
-           // std::cout<<"Ustawiam dla warstwy nr"<<i<<" dla neurona "<<j<<" :"<<neuron_error <<std::endl;
-            for(size_t z = 0 ; z != all[i][j].getWeight_siz() ; z++ ){
-                double new_weight = all[i][j].getWeight(z) - learning_rate *  all[i+1][j].getErr()*all[i][j].getValue() *
-                                                                      ActivationFunction(0,true,all[i][j].getSum());
-                //std::cout<<"Przed "<<all[i][j].getWeight(z) <<std::endl;
-               // std::cout<<"Nowy "<<new_weight<<std::endl;
-                all[i][j].setWeight(new_weight,z);
-                //std::cout<<"Po  "<<all[i][j] .getWeight(z)<<std::endl;
-            }
-
-        }
-
-
-
-    }
-
-}*/
 
 double Net::ActivationFunction(int function, bool is_backprop,double sum_of_neuron) {
 
@@ -226,6 +202,23 @@ double second =0;
 
 
 }
+
+void Net::Print_Answer() {
+
+    for(const auto & i : all.back()){
+        std::cout<<"Wartosc obliczona "<<i.getValue()<<" Total err "<<getTot_err()<<std::endl;
+    }
+
+}
+
+void Net::Print_all_layer() {
+
+    for(size_t i = 0 ; i < all.size();i++){
+        Print_layer(i);
+    }
+
+}
+
 
 
 

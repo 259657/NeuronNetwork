@@ -2,6 +2,8 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
+#include "Net.h"
+
 #ifndef NEURONNETWORK_WINDOW_H
 #define NEURONNETWORK_WINDOW_H
 
@@ -11,10 +13,12 @@ class Window {
 
     int width;
     int  height;
+
+    Net  * siec;
+
     sf::RenderWindow* window;
     sf::CircleShape circle;
-   // sf::RectangleShape line;
-   //sf::VertexArray line;
+
 
     sf::Event event;
 
@@ -24,6 +28,9 @@ class Window {
 
     std::vector<sf::VertexArray> line_start;
     std::vector<sf::VertexArray> line_end;
+
+
+
 public:
     Window(int w, int h);
     ~Window();

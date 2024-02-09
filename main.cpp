@@ -14,27 +14,36 @@ int main() {
 //Neuron.run();
 //Neuron n;
 //n.rand_num();
-Net siec(2,3,1);
+
+    Net siec(2,1,3,1);
+
+    siec.Print_all_layer();
+
+
+//Net siec(2,3,1);
+
+
 
 siec.Print_layer(0);
 int i =0;
 do{
-
     siec.ForwardNetwork();
-    //siec.Print_layer(2);
-    //std::cout << "Po funkcji Forward" << std::endl;
-
-    //siec.Print_layer(1);
+   // siec.Print_Answer();
     siec.BackNetwork();
-    //siec.Print_layer(1);
+   // siec.Print_Answer();
+   // std::cout<<siec.getTot_err()<<std::endl;
     i++;
-    //std::cout<< "Total err "<<siec.getTot_err()<<std::endl;
-}while(/*i<20000);*/siec.getTot_err() > 0.00009);
+
+}while(i < 2000);//siec.getTot_err() >= 0.0001);
 std::cout<<"Po funkcji Back"<<std::endl;
-    //siec.Print_layer(0);
-    //siec.Print_layer(1);
-    siec.Print_layer(2);
-    std::cout<< "Total err po "<<i<<" iteracjach : "<<siec.getTot_err();
+
+   // siec.Print_all_layer();
+    std::cout<< "Total err po "<<i<<" ";
+    siec.Print_Answer();
+
+   // std::cout<< "Total err po "<<i<<" iteracjach : "<<siec.getTot_err();
+
+
 
 //double x = 0.0;
    // std::cout<<"Wynik mianownika :"<<exp(x)/(exp(2*x) + 2*exp(x)+1) <<" Dla x= "<<x<<std::endl;
