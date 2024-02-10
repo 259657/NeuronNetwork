@@ -11,22 +11,27 @@ Window::Window(int w, int h): width(w),height(h) {
     circle.setRadius(40);
     circle.setFillColor(sf::Color(250, 250, 250));
 
-
-
-
+}
+Window::Window(int w, int h, int input_neurons, int hidden_layer, int hidden_neurons, int output_neurons):width(w),height(h) ,Terminal_Network(new Net(input_neurons,hidden_layer,hidden_neurons,output_neurons)) {
+    window = new sf::RenderWindow(sf::VideoMode(width, height), "Neuron");
+    circle.setRadius(40);
+    circle.setFillColor(sf::Color(250, 250, 250));
+    Hidden.resize(Terminal_Network->getSize()-2);
+    All.resize(Terminal_Network->getSize());
+    lines.resize(All.size()-1);
 }
 
 Window::~Window() {
 
 }
 
-void Window::set_vec(int c, int pos_X,int pos_Y , std::vector<sf::CircleShape>& v) {
+void Window::set_vec(size_t c, int pos_X,int pos_Y , std::vector<sf::CircleShape>& v) {
 
-    int w_mid = pos_X / 2 - 50;
-    int h_mid =pos_Y;
-    for(int i = 0; i < c; i++) {
+    int w_mid = pos_X;
+    int h_mid =pos_Y/4;
+    for(size_t  i = 0; i < c; i++) {
 
-        circle.setPosition(w_mid, h_mid+i*170);
+        circle.setPosition(w_mid, (h_mid+i*400)/c);
         v.push_back(circle);
 
     }
@@ -49,11 +54,19 @@ void Window::print_vec(std::vector<T> &v) {
 
 void Window::render() {
     window->clear(sf::Color::Black);
-    print_vec(front);
-    print_vec(middle);
-    print_vec(end);
-    print_vec(line_start);
-    print_vec(line_end);
+    for(auto & i : All){
+        print_vec(i);
+    }
+    for(auto & i : lines){
+        print_vec(i);
+    }
+    //print_vec(All[0]);
+   // print_vec(All[2]);
+//    print_vec(front);
+//    print_vec(middle);
+//    print_vec(end);
+   // print_vec(line_start);
+   // print_vec(line_end);
 
     // draw everything here...
     //window->draw(circle);
@@ -73,18 +86,20 @@ void Window::update() {
 
 
 void Window::run() {
-    set_vec(2,width/4,150,front);
-    set_vec(4,width,50,middle);
-    set_vec(2,1.7*width,150,end);
-    connect(front,middle,line_start,sf::Color::Red);
-    connect(middle,end,line_end,sf::Color::Blue);
+
+    for(size_t i = 0 ; i < All.size();i++){
+        set_vec(Terminal_Network->getLayerSize(i),(i+1)*150,height,All[i]);
+    }
+    for(size_t i = 0 ; i < All.size()-1;i++){
+
+            connect(All[i],All[i+1],lines[i],sf::Color(rand() % 255, rand() % 255, rand() % 255));
+    }
 
     while (window->isOpen())
     {
       //  std::cout << "Wsp srodka kola: (" << srodek_kola.x << ", " << srodek_kola.y << ")" << std::endl;
        update();
        render();
-
 
     }
 
@@ -120,6 +135,8 @@ void Window::connect(std::vector<sf::CircleShape> &start, std::vector<sf::Circle
 
 
 }
+
+
 
 
 

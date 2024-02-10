@@ -37,6 +37,10 @@ public:
     void BackNetwork();
 
     double getTot_err() const {return total_error;};
+    size_t getSize(){return all.size();};
+
+    std::vector<Neuron> getLayer(size_t Layer){return  all[Layer];};
+    size_t getLayerSize(size_t Layer){return  all[Layer].size();};
     double ActivationFunction(int function , bool is_backprop,double sum_of_neuron);
 
 
