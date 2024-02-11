@@ -38,7 +38,8 @@ Net::Net(int input_neurons, int hidden_layer, int hidden_neurons, int output_neu
 
     all.resize(2+hidden_layer);
 
-    learning_rate = 0.031;
+    learning_rate = 0.15;
+    total_error = 0.0;
 
     all[0].resize(input_neurons);
     for(size_t i = 1 ; i < all.size()-1;i++){
@@ -113,8 +114,8 @@ void Net::ForwardNetwork() {
     }
 }
 void Net::BackNetwork() {
-    total_error = 0.0;
 
+    total_error = 0.0;
     // Obliczanie błędu dla neuronów w warstwie wyjściowej
     for(size_t i = 0; i < all.back().size(); i++) {
         double output_error = exp_val - all.back()[i].getValue();
@@ -198,7 +199,7 @@ double second =0;
         exp_val = 1;
     }
       // std::cout<<"First "<<first<<" Second : "<<second<<std::endl;
-        std::cout<<"wartosc oczekiwana to : "<<exp_val<<std::endl;
+       // std::cout<<"wartosc oczekiwana to : "<<exp_val<<std::endl;
 
 
 }
@@ -216,6 +217,32 @@ void Net::Print_all_layer() {
     for(size_t i = 0 ; i < all.size();i++){
         Print_layer(i);
     }
+
+}
+
+void Net::setIntAndOutValue() {
+    double first,second;
+    first = ( std::rand() % 2);
+    second = ( std::rand() % 2);
+
+        all[0][0].setValue(first);
+        all[0][1].setValue(second);
+      //  std::cout<<"Zmienione wartosci na wejsciu "<<all[0][0].getValue()<<" "<<all[0][1].getValue()<<" ";
+        setExpValue_XOR();
+   // ( std::rand() % 2)
+
+
+}
+
+void Net::TestNet(int first,int second) {
+
+    all[0][0].setValue(first);
+    all[0][1].setValue(second);
+    setExpValue_XOR();
+    ForwardNetwork();
+    BackNetwork();
+    Print_Answer();
+
 
 }
 

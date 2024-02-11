@@ -16,7 +16,7 @@ Window::Window(int w, int h, int input_neurons, int hidden_layer, int hidden_neu
     window = new sf::RenderWindow(sf::VideoMode(width, height), "Neuron");
     circle.setRadius(40);
     circle.setFillColor(sf::Color(250, 250, 250));
-    Hidden.resize(Terminal_Network->getSize()-2);
+    //Hidden.resize(Terminal_Network->getSize()-2);
     All.resize(Terminal_Network->getSize());
     lines.resize(All.size()-1);
 }

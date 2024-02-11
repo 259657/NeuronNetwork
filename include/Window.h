@@ -24,7 +24,7 @@ class Window {
 
 
 
-    std::vector<std::vector<sf::CircleShape>> Hidden;
+    //std::vector<std::vector<sf::CircleShape>> Hidden;
 
 
     std::vector<std::vector<sf::CircleShape>> All;

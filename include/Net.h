@@ -31,19 +31,22 @@ public:
     void initNeuronsInLayer(size_t number_of_neurons,size_t which_layer);
     void initWeight(std::vector<Neuron>& in , std::vector<Neuron> & out);
 
-    //sum of [waga*input]+bias
-    void ForwardNetwork();
     void setExpValue_XOR();
-    void BackNetwork();
+    void setIntAndOutValue();
+    void TestNet(int first,int second);
+
 
     double getTot_err() const {return total_error;};
+    double getLastNeuron() const {return all.back()[0].getValue();};
     size_t getSize(){return all.size();};
-
     std::vector<Neuron> getLayer(size_t Layer){return  all[Layer];};
     size_t getLayerSize(size_t Layer){return  all[Layer].size();};
+
+    //sum of [waga*input]+bias
+    void ForwardNetwork();
+    void BackNetwork();
+
     double ActivationFunction(int function , bool is_backprop,double sum_of_neuron);
-
-
     double TanhFunction(bool is_backprop,double sum_of_neuron);// Wartosci pomiedzy -1 a 1 przydatne w hidden layers
     double SigmoidFunction(bool is_backprop,double x);// Wartosci pomiędzy 0 a 1 przydatne  w binary ? chyba ?
     //void ReLuFunction(); max(0,x)
