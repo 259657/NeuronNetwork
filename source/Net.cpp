@@ -38,7 +38,7 @@ Net::Net(int input_neurons, int hidden_layer, int hidden_neurons, int output_neu
 
     all.resize(2+hidden_layer);
 
-    learning_rate = 0.15;
+    learning_rate = 0.0315;
     total_error = 0.0;
 
     all[0].resize(input_neurons);
@@ -109,7 +109,7 @@ void Net::ForwardNetwork() {
             }
             all[i][j].setSum(all[i][j].getValue());
             all[i][j].setValue(ActivationFunction(0,false,all[i][j].getValue()));
-
+            all[i][j].setText();
         }
     }
 }
@@ -198,6 +198,9 @@ double second =0;
     }else{
         exp_val = 1;
     }
+//    for(size_t i = 0 ; i < all.back().size();i++){
+//    all.back()[i].setText();
+//    }
       // std::cout<<"First "<<first<<" Second : "<<second<<std::endl;
        // std::cout<<"wartosc oczekiwana to : "<<exp_val<<std::endl;
 
@@ -224,11 +227,20 @@ void Net::setIntAndOutValue() {
     double first,second;
     first = ( std::rand() % 2);
     second = ( std::rand() % 2);
+   // std::cout<<first<<" "<<second<<std::endl;
 
+
+
+      //  all[0][0].setValue(wektorPar[losowyIndeks].first);
+      //  all[0][1].setValue(wektorPar[losowyIndeks].second);
         all[0][0].setValue(first);
         all[0][1].setValue(second);
+        all[0][0].setText();
+        all[0][1].setText();
       //  std::cout<<"Zmienione wartosci na wejsciu "<<all[0][0].getValue()<<" "<<all[0][1].getValue()<<" ";
         setExpValue_XOR();
+
+
    // ( std::rand() % 2)
 
 

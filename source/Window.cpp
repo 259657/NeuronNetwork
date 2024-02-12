@@ -19,19 +19,41 @@ Window::Window(int w, int h, int input_neurons, int hidden_layer, int hidden_neu
     //Hidden.resize(Terminal_Network->getSize()-2);
     All.resize(Terminal_Network->getSize());
     lines.resize(All.size()-1);
+
+
+
+
+//    if (!font.loadFromFile("../Font/dogicapixel.ttf")) {
+//       std::cout<<"HAJ"<<std::endl;
+//    }
+//    text.setFont(font);
+//    text.setCharacterSize(20);
+//    text.setFillColor(sf::Color::Red);
+//    double myDouble = 3.14;
+//    std::ostringstream ss;
+//    ss << myDouble;
+//    std::string str = ss.str();
+//    text.setString(str);
+//    text.setPosition(160, 125);
+
 }
 
 Window::~Window() {
 
 }
 
-void Window::set_vec(size_t c, int pos_X,int pos_Y , std::vector<sf::CircleShape>& v) {
+void Window::set_vec(size_t c, int pos_X,int pos_Y , std::vector<sf::CircleShape>& v,size_t j) {
 
     int w_mid = pos_X;
     int h_mid =pos_Y/4;
+     std::vector<Neuron> &tmp = *Terminal_Network->getLayerr(j);
     for(size_t  i = 0; i < c; i++) {
 
         circle.setPosition(w_mid, (h_mid+i*400)/c);
+        tmp[i].setFont(font);
+        tmp[i].setText();
+        tmp[i].setTextPosition(circle.getPosition().x + circle.getRadius()/2, circle.getPosition().y + circle.getRadius()/2);
+        //tmp[i].getPos();
         v.push_back(circle);
 
     }
@@ -57,17 +79,19 @@ void Window::render() {
     for(auto & i : All){
         print_vec(i);
     }
+    for(size_t z = 0; z < All.size(); z++){
+        std::vector<Neuron> &tmp = *Terminal_Network->getLayerr(z);
+        for(auto & k : tmp){
+           // k.getPos();
+            window->draw(k.getTExt());
+        }
+    }
+
     for(auto & i : lines){
         print_vec(i);
     }
-    //print_vec(All[0]);
-   // print_vec(All[2]);
-//    print_vec(front);
-//    print_vec(middle);
-//    print_vec(end);
-   // print_vec(line_start);
-   // print_vec(line_end);
 
+    //window->draw(text);
     // draw everything here...
     //window->draw(circle);
 
@@ -75,9 +99,12 @@ void Window::render() {
     window->display();
 }
 void Window::update() {
-
+    //Terminal_Network->setIntAndOutValue();
+    Terminal_Network->ForwardNetwork();
+    Terminal_Network->BackNetwork();
     while (window->pollEvent(event))
     {
+
         // "close requested" event: we close the window
         if (event.type == sf::Event::Closed)
             window->close();
@@ -88,16 +115,18 @@ void Window::update() {
 void Window::run() {
 
     for(size_t i = 0 ; i < All.size();i++){
-        set_vec(Terminal_Network->getLayerSize(i),(i+1)*150,height,All[i]);
+        set_vec(Terminal_Network->getLayerSize(i),(i+1)*150,height,All[i], i);
     }
     for(size_t i = 0 ; i < All.size()-1;i++){
 
             connect(All[i],All[i+1],lines[i],sf::Color(rand() % 255, rand() % 255, rand() % 255));
     }
 
+
     while (window->isOpen())
     {
       //  std::cout << "Wsp srodka kola: (" << srodek_kola.x << ", " << srodek_kola.y << ")" << std::endl;
+
        update();
        render();
 

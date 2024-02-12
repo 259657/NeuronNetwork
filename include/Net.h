@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <utility>
 
 class Net {
     int input,  hidden,  output;
@@ -40,6 +41,9 @@ public:
     double getLastNeuron() const {return all.back()[0].getValue();};
     size_t getSize(){return all.size();};
     std::vector<Neuron> getLayer(size_t Layer){return  all[Layer];};
+
+     std::vector<Neuron>* getLayerr(size_t j) {return &all[j];};
+
     size_t getLayerSize(size_t Layer){return  all[Layer].size();};
 
     //sum of [waga*input]+bias

@@ -10,13 +10,13 @@ int main() {
     srand( time( NULL ) );
     std::cout << "Hello, World!" << std::endl;
 //
-//Window Graphic(800,800,2,2,4,2);
-//    Graphic.getNet().Print_layer(0);
-//Graphic.run();
+Window Graphic(800,800,2,2,4,1);
+    Graphic.getNet().Print_layer(0);
+Graphic.run();
 
 
-
-    Net siec(2,1,3,1);
+/*
+    Net siec(2,1,4,1);
   //  siec.Print_all_layer();
 
 siec.Print_layer(0);
@@ -42,8 +42,8 @@ do{
    }
     i++;
 
-}while(i<2000000); //siec.getTot_err() >= 0.00003);
-
+}while(i<250000); //siec.getTot_err() >= 0.00003);
+    siec.Print_Answer();
     std::cout<<"Min "<<min<<" Max "<<max<<std::endl;
     std::cout<<"I "<<i<<std::endl;
 
@@ -60,7 +60,7 @@ do{
 
     siec.TestNet(1,1);//0
 
-
+    */
 
 }
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
+#include <sstream>
 
 #include "Net.h"
 
@@ -21,6 +22,8 @@ class Window {
 
 
     sf::Event event;
+    sf::Text text;
+    sf::Font font;
 
 
 
@@ -42,7 +45,7 @@ public:
     void render();
     void update();
 
-    void set_vec(size_t count,int pos_X,int pos_y,std::vector<sf::CircleShape>& v);
+    void set_vec(size_t count,int pos_X,int pos_y,std::vector<sf::CircleShape>& v,size_t i);
 
     Net getNet(){ return *Terminal_Network;};
 
