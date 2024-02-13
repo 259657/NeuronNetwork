@@ -125,7 +125,7 @@ void Net::BackNetwork() {
     }
     //do RMS dzielimy przez iczbe wyjsc
     total_error /= all.back().size();
-
+    setText_Tot_Err();
 
     // Obliczanie błędu dla warstw ukrytych
     for(int i = all.size() - 2; i >= 0; i--) {
@@ -250,9 +250,11 @@ void Net::TestNet(int first,int second) {
 
     all[0][0].setValue(first);
     all[0][1].setValue(second);
+    all[0][0].setText();
+    all[0][1].setText();
     setExpValue_XOR();
     ForwardNetwork();
-    BackNetwork();
+   // BackNetwork();
     Print_Answer();
 
 

@@ -19,7 +19,7 @@ Window::Window(int w, int h, int input_neurons, int hidden_layer, int hidden_neu
     //Hidden.resize(Terminal_Network->getSize()-2);
     All.resize(Terminal_Network->getSize());
     lines.resize(All.size()-1);
-
+    Terminal_Network->setFont(font);
 
 
 
@@ -86,7 +86,7 @@ void Window::render() {
             window->draw(k.getTExt());
         }
     }
-
+    window->draw(Terminal_Network->getTExt_Tot_Err());
     for(auto & i : lines){
         print_vec(i);
     }
@@ -98,17 +98,82 @@ void Window::render() {
     // end the current frame
     window->display();
 }
+int tes = 0;
+bool enterPressed = false;
 void Window::update() {
-    //Terminal_Network->setIntAndOutValue();
-    Terminal_Network->ForwardNetwork();
-    Terminal_Network->BackNetwork();
+//    Terminal_Network->setIntAndOutValue();
+//    Terminal_Network->ForwardNetwork();
+//    Terminal_Network->BackNetwork();
+    std::cout<<tes<<std::endl;
     while (window->pollEvent(event))
     {
 
         // "close requested" event: we close the window
-        if (event.type == sf::Event::Closed)
+        if (event.type == sf::Event::Closed){
             window->close();
+        }
+        else if (event.type == sf::Event::KeyPressed)
+        {
+            if (event.key.code == sf::Keyboard::Q)
+            {
+                std::cout << "Q key was pressed!" << std::endl;
+                Terminal_Network->TestNet(1,1);
+
+                    enterPressed = true;
+
+
+
+            }
+            if (event.key.code == sf::Keyboard::W)
+            {
+                std::cout << "Q key was pressed!" << std::endl;
+                Terminal_Network->TestNet(0,0);
+
+                    enterPressed = true;
+
+
+
+            }
+            if (event.key.code == sf::Keyboard::E)
+            {
+                std::cout << "Q key was pressed!" << std::endl;
+                Terminal_Network->TestNet(1,0);
+
+                    enterPressed = true;
+
+
+
+            }
+            if (event.key.code == sf::Keyboard::R)
+            {
+                std::cout << "Q key was pressed!" << std::endl;
+                Terminal_Network->TestNet(0,1);
+
+                    enterPressed = true;
+
+
+            }
+            if (event.key.code == sf::Keyboard::Space)
+            {
+                   if(!enterPressed){
+                       enterPressed = true;
+                   }else
+                    enterPressed = false;
+
+            }
+
+
+        }
     }
+    if (enterPressed == false) {
+        Terminal_Network->setIntAndOutValue();
+        Terminal_Network->ForwardNetwork();
+        Terminal_Network->BackNetwork();
+        ++tes;
+    }
+
+
+
 }
 
 

@@ -16,6 +16,8 @@ class Net {
 
     std::vector<std::vector<Neuron>> all;
    // double RM;//Root Mean  Error
+    sf::Text text_tot_err;
+    sf::Font font;
     double total_error;
     double learning_rate;
     double exp_val;
@@ -54,6 +56,30 @@ public:
     double TanhFunction(bool is_backprop,double sum_of_neuron);// Wartosci pomiedzy -1 a 1 przydatne w hidden layers
     double SigmoidFunction(bool is_backprop,double x);// Wartosci pomiędzy 0 a 1 przydatne  w binary ? chyba ?
     //void ReLuFunction(); max(0,x)
+
+    void setText_Tot_Err(){
+
+        std::ostringstream ss;
+        ss << this->total_error;
+        std::string str = ss.str();
+        text_tot_err.setString(str);
+    };
+    sf::Text getTExt_Tot_Err(){
+        return text_tot_err;
+    };
+    void setFont(const sf::Font& f){
+        font = f;
+        if (!font.loadFromFile("../Font/dogicapixel.ttf")) {
+            std::cerr << "Błąd wczytywania czcionki!" << std::endl;
+        }
+        text_tot_err.setFont(font);
+        text_tot_err.setCharacterSize(20);
+        text_tot_err.setFillColor(sf::Color::Red);
+        text_tot_err.setPosition(0,  0);
+
+
+    };
+
 };
 
 
