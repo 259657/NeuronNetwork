@@ -33,6 +33,8 @@ class Window {
     std::vector<std::vector<sf::CircleShape>> All;
     std::vector<std::vector<sf::VertexArray>> lines;
 
+    std::vector<sf::CircleShape> dots;
+
 
 
 
@@ -54,7 +56,7 @@ public:
 
     template <typename T>
     void print_vec(std::vector<T>& v);
-    void connect(std::vector<sf::CircleShape>& start,std::vector<sf::CircleShape>& end,std::vector<sf::VertexArray>& con, sf::Color c);
+    void connect(std::vector<sf::CircleShape>& start,std::vector<sf::CircleShape>& end,std::vector<sf::VertexArray>& con, sf::Color c,size_t wich_layer, bool is_init);
 
 
 };

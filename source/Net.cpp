@@ -39,6 +39,7 @@ Net::Net(int input_neurons, int hidden_layer, int hidden_neurons, int output_neu
     all.resize(2+hidden_layer);
 
     learning_rate = 0.0315;
+   // learning_rate = 0.2;
     total_error = 0.0;
 
     all[0].resize(input_neurons);
@@ -108,7 +109,7 @@ void Net::ForwardNetwork() {
                 all[i][j].SumAndBias(1, 1);//biios
             }
             all[i][j].setSum(all[i][j].getValue());
-            all[i][j].setValue(ActivationFunction(0,false,all[i][j].getValue()));
+            all[i][j].setValue(ActivationFunction(1,false,all[i][j].getValue()));
             all[i][j].setText();
         }
     }
@@ -119,7 +120,7 @@ void Net::BackNetwork() {
     // Obliczanie błędu dla neuronów w warstwie wyjściowej
     for(size_t i = 0; i < all.back().size(); i++) {
         double output_error = exp_val - all.back()[i].getValue();
-        all.back()[i].setErr(output_error * ActivationFunction(0, true, all.back()[i].getSum()));
+        all.back()[i].setErr(output_error * ActivationFunction(1, true, all.back()[i].getSum()));
         //do RMS kwadrat
         total_error += std::pow(output_error , 2);
     }
@@ -134,7 +135,7 @@ void Net::BackNetwork() {
             for(size_t z = 0; z < all[i][j].getWeight_siz(); z++) {
                 neuron_error += all[i + 1][z].getErr() * all[i][j].getWeight(z);
             }
-            all[i][j].setErr(neuron_error * ActivationFunction(0, true, all[i][j].getSum()));
+            all[i][j].setErr(neuron_error * ActivationFunction(1, true, all[i][j].getSum()));
         }
     }
 
@@ -158,7 +159,7 @@ double Net::ActivationFunction(int function, bool is_backprop,double sum_of_neur
            return SigmoidFunction(is_backprop, sum_of_neuron);
 
         case 1 :
-            return TanhFunction(is_backprop, sum_of_neuron);
+            return NormalizedTanhFunction(is_backprop, sum_of_neuron);
 
         default:
             std::cout<<"Nie ma takiej funkcji w kodzie"<<std::endl;
@@ -179,8 +180,14 @@ double Net::SigmoidFunction(bool is_backprop, double x) {
 
 }
 
-double Net::TanhFunction(bool is_backprop, double sum_of_neuron) {
-    return 0;
+double Net::NormalizedTanhFunction(bool is_backprop, double x) {
+    if(is_backprop == 0){
+        return (tanh(x)+1)/2;
+    }else{
+
+        // std::cout<<"Wynik mianownika :"<<(exp(2*x) + 2*exp(x)+1) <<" Dla x= "<<x<<std::endl;
+        return 1/(2*cosh(x)*cosh(x));
+    }
 }
 
 void Net::setExpValue_XOR() {
@@ -252,7 +259,7 @@ void Net::TestNet(int first,int second) {
     all[0][1].setValue(second);
     all[0][0].setText();
     all[0][1].setText();
-    setExpValue_XOR();
+   setExpValue_XOR();
     ForwardNetwork();
    // BackNetwork();
     Print_Answer();

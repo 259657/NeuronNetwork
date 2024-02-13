@@ -53,7 +53,7 @@ public:
     void BackNetwork();
 
     double ActivationFunction(int function , bool is_backprop,double sum_of_neuron);
-    double TanhFunction(bool is_backprop,double sum_of_neuron);// Wartosci pomiedzy -1 a 1 przydatne w hidden layers
+    double NormalizedTanhFunction(bool is_backprop,double sum_of_neuron);// Wartosci pomiedzy -1 a 1 przydatne w hidden layers
     double SigmoidFunction(bool is_backprop,double x);// Wartosci pomiędzy 0 a 1 przydatne  w binary ? chyba ?
     //void ReLuFunction(); max(0,x)
 

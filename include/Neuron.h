@@ -11,6 +11,7 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 #include <sstream>
+#include <iomanip>
 
 class Neuron  {
 //
@@ -75,7 +76,7 @@ public:
     void setText(){
 
         std::ostringstream ss;
-        ss << this->value;
+        ss << std::fixed << std::setprecision(2) << this->value;
         std::string str = ss.str();
         text.setString(str);
     };
