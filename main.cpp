@@ -10,7 +10,7 @@ int main() {
     srand( time( NULL ) );
     std::cout << "Hello, World!" << std::endl;
 //
-Window Graphic(1600,600,2,2,5,1);
+Window Graphic(1600,600,2,2,4,1, true);
     Graphic.getNet().Print_layer(0);
 Graphic.run();
 

@@ -14,6 +14,7 @@ class Window {
 
     int width;
     int  height;
+    bool is_mouse = false;
 
     Net * Terminal_Network;
 
@@ -24,9 +25,9 @@ class Window {
     sf::Event event;
     sf::Text text;
     sf::Font font;
+   // sf::Vertex line;
 
-
-
+    sf::VertexArray border;
     //std::vector<std::vector<sf::CircleShape>> Hidden;
 
 
@@ -35,13 +36,17 @@ class Window {
 
     std::vector<sf::CircleShape> dots;
 
+    sf::Image out_image;
+    sf::Sprite out_spirite;
+    sf::Texture out_texture;
 
+    //std::vector<>
 
 
 
 public:
     Window(int w, int h);
-    Window(int w, int h,int input_neurons , int hidden_layer,int hidden_neurons , int output_neurons);
+    Window(int w, int h,int input_neurons , int hidden_layer,int hidden_neurons , int output_neurons,bool is_mouse);
     ~Window();
     void run();
     void render();
@@ -57,7 +62,7 @@ public:
     template <typename T>
     void print_vec(std::vector<T>& v);
     void connect(std::vector<sf::CircleShape>& start,std::vector<sf::CircleShape>& end,std::vector<sf::VertexArray>& con, sf::Color c,size_t wich_layer, bool is_init);
-
+    void initBorder();
 
 };
 

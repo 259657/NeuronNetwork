@@ -52,7 +52,12 @@ Net::Net(int input_neurons, int hidden_layer, int hidden_neurons, int output_neu
     for(size_t i = 0 ; i < all.size();i++){
         initNeuronsInLayer(all[i].size(),i);
     }
-    setExpValue_XOR();
+
+        setExpValue_XOR();
+
+
+
+
 }
 void Net::initNeuronsInLayer(size_t number_of_neurons,size_t which_layer) {
 
@@ -205,12 +210,6 @@ double second =0;
     }else{
         exp_val = 1;
     }
-//    for(size_t i = 0 ; i < all.back().size();i++){
-//    all.back()[i].setText();
-//    }
-      // std::cout<<"First "<<first<<" Second : "<<second<<std::endl;
-       // std::cout<<"wartosc oczekiwana to : "<<exp_val<<std::endl;
-
 
 }
 
@@ -235,7 +234,6 @@ void Net::setIntAndOutValue() {
     first = ( std::rand() % 2);
     second = ( std::rand() % 2);
    // std::cout<<first<<" "<<second<<std::endl;
-
 
 
       //  all[0][0].setValue(wektorPar[losowyIndeks].first);
@@ -264,10 +262,45 @@ void Net::TestNet(int first,int second) {
    // BackNetwork();
     Print_Answer();
 
-
 }
 
+void Net::setMouseValue(double first,double second, int is_white) {
+    x_pos.push_back(first);
+    y_pos.push_back(second);
+    if(is_white == 1){
+        exp_pos.push_back(1.0);
+        exp_val = exp_pos.back();
+    }else{
+        exp_pos.push_back(0.0);
+        exp_val = exp_pos.back();
+    }
 
+//    all[0][0].setValue(first);
+//    all[0][1].setValue(second);
+//    all[0][0].setText();
+//    all[0][1].setText();
+    //setExpValue_XOR();
+//    ForwardNetwork();
+    // BackNetwork();
+    //Print_Answer();
+
+
+
+}
+void Net::setMouseExpValue_XOR(int siz_exp) {
+
+
+      all[0][0].setValue(x_pos[siz_exp]);
+      all[0][1].setValue(y_pos[siz_exp]);
+      all[0][0].setText();
+      all[0][1].setText();
+        exp_val = exp_pos[siz_exp];
+      ForwardNetwork();
+       BackNetwork();
+
+
+
+}
 
 
 

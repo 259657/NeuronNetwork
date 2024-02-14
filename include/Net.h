@@ -16,6 +16,13 @@ class Net {
 
     std::vector<std::vector<Neuron>> all;
    // double RM;//Root Mean  Error
+
+    std::vector<double> x_pos;
+    std::vector<double> y_pos;
+    std::vector<double> exp_pos;
+
+
+
     sf::Text text_tot_err;
     sf::Font font;
     double total_error;
@@ -38,6 +45,9 @@ public:
     void setIntAndOutValue();
     void TestNet(int first,int second);
 
+    void setMouseValue(double first, double second, int is_white);
+    void setMouseExpValue_XOR(int siz_exp);
+    size_t getVexExpSize(){return exp_pos.size();};
 
     double getTot_err() const {return total_error;};
     double getLastNeuron() const {return all.back()[0].getValue();};
@@ -79,6 +89,7 @@ public:
 
 
     };
+
 
 };
 

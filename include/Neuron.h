@@ -39,14 +39,9 @@ public:
     };
 
 // r - prymitywny rodzaj neurona
-    Neuron(int r){
+    explicit Neuron(int r){
     sum = 0;
     error = 0;
-
-
-
-
-
     if(r == 1){
        // std::cout<<"TU"<<std::endl;
         this->value = 0;
@@ -55,6 +50,13 @@ public:
         this->value =( std::rand() % 2) ;
     }else
         this->value = rand_num();
+    };
+    explicit Neuron(double r){
+         std::cout<<"TEN"<<std::endl;
+        sum = 0;
+        error = 0;
+        this->value = r;
+
     };
     //
 
